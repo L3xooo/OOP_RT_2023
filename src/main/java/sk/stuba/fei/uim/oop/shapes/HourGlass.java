@@ -2,11 +2,11 @@ package sk.stuba.fei.uim.oop.shapes;
 
 import java.awt.*;
 
-public class PresipacieHodiny extends MyShape{
-    public PresipacieHodiny(int x, int y, int radius) {
+public class HourGlass extends MyShape{
+    public HourGlass(int x, int y, int radius) {
         super(x, y, radius);
     }
-    public PresipacieHodiny(){}
+    public HourGlass(){}
     @Override
     public void draw(Graphics g){
         int[] xPoints = {this.getX(),this.getX()+getRadius(),this.getX(),this.getX()+getRadius()*2,this.getX()+this.getRadius(),

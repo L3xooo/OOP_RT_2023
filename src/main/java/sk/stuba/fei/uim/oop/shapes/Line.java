@@ -9,10 +9,10 @@ import java.awt.*;
 @Getter
 @Setter
 public class Line {
-    int x;
-    int y;
-    int endX;
-    int endY;
+    private int x;
+    private int y;
+    private int endX;
+    private int endY;
 
     public Line(int x,int y) {
         this.x = x;

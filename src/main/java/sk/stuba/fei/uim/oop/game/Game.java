@@ -1,10 +1,12 @@
 package sk.stuba.fei.uim.oop.game;
 
+import lombok.Getter;
 import sk.stuba.fei.uim.oop.controls.Logic;
 
 import javax.swing.*;
 import java.awt.*;
 
+@Getter
 public class Game {
     public Game(){
         JFrame frame = new JFrame("ExamRT");
@@ -26,38 +28,12 @@ public class Game {
         JPanel upperMenu = new JPanel();
         upperMenu.setBackground(Color.lightGray);
         upperMenu.setLayout(new GridLayout(2,3));
-
-        JSlider lengthSlider = new JSlider(JSlider.VERTICAL,20,200,20);
-        lengthSlider.setFocusable(false);
-        lengthSlider.setMinorTickSpacing(10);
-        lengthSlider.setMajorTickSpacing(10);
-        lengthSlider.setSnapToTicks(true);
-        lengthSlider.setPaintTicks(true);
-        lengthSlider.setPaintLabels(true);
-        lengthSlider.addChangeListener(logic);
-        JSlider radiusSlider = new JSlider(JSlider.VERTICAL,1,20,1);
-        radiusSlider.setFocusable(false);
-        radiusSlider.setMinorTickSpacing(1);
-        radiusSlider.setMajorTickSpacing(1);
-        radiusSlider.setSnapToTicks(true);
-        radiusSlider.setPaintTicks(true);
-        radiusSlider.setPaintLabels(true);
-        radiusSlider.addChangeListener(logic);
-        JSlider spacingSlider = new JSlider(JSlider.VERTICAL,1,20,1);
-        spacingSlider.setFocusable(false);
-        spacingSlider.setMinorTickSpacing(1);
-        spacingSlider.setMajorTickSpacing(1);
-        spacingSlider.setSnapToTicks(true);
-        spacingSlider.setPaintTicks(true);
-        spacingSlider.setPaintLabels(true);
-        spacingSlider.addChangeListener(logic);
-
         upperMenu.add(lengthLabel);
         upperMenu.add(radiusLabel);
         upperMenu.add(spacingLabel);
-        upperMenu.add(lengthSlider);
-        upperMenu.add(radiusSlider);
-        upperMenu.add(spacingSlider);
+        upperMenu.add(logic.getLengthSlider());
+        upperMenu.add(logic.getRadiusSlider());
+        upperMenu.add(logic.getSpacingSlider());
 
         String[] cbList = {"Kruh","Stvorec","Presipacie hodiny"};
         JComboBox<String> cb = new JComboBox<>(cbList);

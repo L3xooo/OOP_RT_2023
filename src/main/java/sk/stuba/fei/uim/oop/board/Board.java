@@ -13,11 +13,11 @@ import java.util.List;
 @Getter
 @Setter
 public class Board extends JPanel {
-    List<Line> lines;
-    List<MyShape> myShapes;
-    int spacing;
-    int length;
-    Line line;
+    private List<Line> lines;
+    private List<MyShape> myShapes;
+    private int spacing;
+    private int length;
+    private Line line;
     public Board(){
         this.setBackground(Color.cyan);
         this.lines = new ArrayList<>();
@@ -31,7 +31,6 @@ public class Board extends JPanel {
         for(int a = 0; a < this.getMyShapes().size(); a++) {
             if (a % spacing == 0) {
                 myShapes.get(a).draw(g);
-
             }
         }
     }
