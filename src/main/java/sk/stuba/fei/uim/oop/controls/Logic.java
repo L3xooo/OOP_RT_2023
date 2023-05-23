@@ -51,7 +51,6 @@ public class Logic extends UniversalAdapter{
         this.actualRadius = 1;
         this.actualSpacing = 1;
         this.getBoard().setSpacing(this.getActualSpacing());
-        this.getBoard().setLength(this.getActualLength());
         board.addMouseMotionListener(this);
     }
 
@@ -61,7 +60,6 @@ public class Logic extends UniversalAdapter{
         if (source instanceof JSlider) {
             if (source == this.getLengthSlider()) {
                 this.setActualLength(((JSlider) source).getValue());
-                this.getBoard().setLength(this.getActualLength());
             }
             if (source == this.getRadiusSlider()) {
                 this.setActualRadius(((JSlider) source).getValue());
@@ -77,7 +75,9 @@ public class Logic extends UniversalAdapter{
         int x = e.getX();
         int y = e.getY();
         if (this.getBoard().getMyShapes().size() > this.getActualLength()) {
-            this.getBoard().getMyShapes().remove(0);
+            while(this.getBoard().getMyShapes().size() > this.getActualLength()) {
+                this.getBoard().getMyShapes().remove(0);
+            }
         }
         if (this.getActiveShape() instanceof Circle) {
             this.getBoard().getMyShapes().add(new Circle(x,y,actualRadius));
