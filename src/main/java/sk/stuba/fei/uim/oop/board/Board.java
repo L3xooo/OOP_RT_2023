@@ -2,7 +2,6 @@ package sk.stuba.fei.uim.oop.board;
 
 import lombok.Getter;
 import lombok.Setter;
-import sk.stuba.fei.uim.oop.shapes.Line;
 import sk.stuba.fei.uim.oop.shapes.MyShape;
 
 import javax.swing.*;
@@ -13,13 +12,10 @@ import java.util.List;
 @Getter
 @Setter
 public class Board extends JPanel {
-    private List<Line> lines;
     private List<MyShape> myShapes;
     private int spacing;
-    private Line line;
     public Board(){
         this.setBackground(Color.cyan);
-        this.lines = new ArrayList<>();
         this.myShapes = new ArrayList<>();
     }
 
