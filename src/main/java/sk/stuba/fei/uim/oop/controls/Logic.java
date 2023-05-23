@@ -73,8 +73,7 @@ public class Logic extends UniversalAdapter{
         }
     }
 
-    @Override
-    public void mouseDragged(MouseEvent e) {
+    private void drawShapeLine(MouseEvent e){
         int x = e.getX();
         int y = e.getY();
         if (this.getBoard().getMyShapes().size() > this.getActualLength()) {
@@ -92,27 +91,16 @@ public class Logic extends UniversalAdapter{
         this.getBoard().revalidate();
         this.getBoard().repaint();
     }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        drawShapeLine(e);
+       }
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        int x = e.getX();
-        int y = e.getY();
-
-        if (this.getBoard().getMyShapes().size() > this.getActualLength()) {
-            this.getBoard().getMyShapes().remove(0);
-        }
-        if (this.getActiveShape() instanceof Circle) {
-            this.getBoard().getMyShapes().add(new Circle(x,y,actualRadius));
-        }
-        if (this.getActiveShape() instanceof HourGlass) {
-            this.getBoard().getMyShapes().add(new HourGlass(x,y,actualRadius));
-        }
-        if (this.getActiveShape() instanceof Square) {
-            this.getBoard().getMyShapes().add(new Square(x,y,actualRadius));
-        }
-        this.getBoard().revalidate();
-        this.getBoard().repaint();
-    }
+        drawShapeLine(e);
+       }
 
     @Override
     public void actionPerformed(ActionEvent e) {
