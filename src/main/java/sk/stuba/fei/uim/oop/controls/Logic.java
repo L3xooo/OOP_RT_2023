@@ -24,6 +24,9 @@ public class Logic extends UniversalAdapter{
     private JSlider lengthSlider;
     private JSlider radiusSlider;
     private JSlider spacingSlider;
+    private static final String CB_LIST_CIRCLE = "Circle";
+    private static final String CB_LIST_SQUARE = "Square";
+    private static final String CB_LIST_HOURGLASS = "HourGlass";
 
     public Logic(){
         this.activeShape = new Circle();
@@ -63,12 +66,18 @@ public class Logic extends UniversalAdapter{
             }
             if (source == this.getRadiusSlider()) {
                 this.setActualRadius(((JSlider) source).getValue());
+                for(MyShape shape : this.getBoard().getMyShapes()){
+                    shape.setRadius(this.getActualRadius());
+                }
             }
             if (source == this.getSpacingSlider()) {
                 this.setActualSpacing(((JSlider) source).getValue());
                 this.getBoard().setSpacing(this.getActualSpacing());
+
             }
         }
+        this.getBoard().revalidate();
+        this.getBoard().repaint();
     }
 
     private void drawShapeLine(MouseEvent e){
@@ -107,13 +116,13 @@ public class Logic extends UniversalAdapter{
         Object source = e.getSource();
         if(source instanceof JComboBox) {
             String name = ((JComboBox<String>) source).getItemAt(((JComboBox<String>) source).getSelectedIndex());
-            if (name.equals("Kruh")) {
+            if (name.equals(CB_LIST_CIRCLE)) {
                 this.setActiveShape(new Circle());
             }
-            if (name.equals("Stvorec")) {
+            if (name.equals(CB_LIST_SQUARE)) {
                 this.setActiveShape(new Square());
             }
-            if (name.equals("Presipacie hodiny")) {
+            if (name.equals(CB_LIST_HOURGLASS)) {
                 this.setActiveShape(new HourGlass());
             }
         }

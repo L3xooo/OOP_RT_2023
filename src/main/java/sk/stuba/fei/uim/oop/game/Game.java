@@ -27,15 +27,19 @@ public class Game {
 
         JPanel upperMenu = new JPanel();
         upperMenu.setBackground(Color.lightGray);
-        upperMenu.setLayout(new GridLayout(2,3));
-        upperMenu.add(lengthLabel);
-        upperMenu.add(radiusLabel);
-        upperMenu.add(spacingLabel);
+        upperMenu.setLayout(new GridLayout(1,3));
         upperMenu.add(logic.getLengthSlider());
         upperMenu.add(logic.getRadiusSlider());
         upperMenu.add(logic.getSpacingSlider());
 
-        String[] cbList = {"Kruh","Stvorec","Presipacie hodiny"};
+        JPanel test = new JPanel();
+        test.setLayout(new GridLayout(1,3));
+        test.add(lengthLabel);
+        test.add(radiusLabel);
+        test.add(spacingLabel);
+
+
+        String[] cbList = {"Circle","Square","HourGlass"};
         JComboBox<String> cb = new JComboBox<>(cbList);
         cb.setBounds(50,50,90,20);
         cb.addActionListener(logic);
@@ -43,6 +47,7 @@ public class Game {
         frame.add(sideMenu,BorderLayout.WEST);
         frame.add(logic.getBoard());
         sideMenu.add(upperMenu);
+        sideMenu.add(test,BorderLayout.NORTH);
         sideMenu.add(cb,BorderLayout.SOUTH);
 
         frame.setVisible(true);
